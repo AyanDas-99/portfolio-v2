@@ -2,7 +2,8 @@ import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/components/custom_appbar.dart';
 import 'package:portfolio_1/components/custom_drawer.dart';
-import 'package:portfolio_1/hero_section.dart';
+import 'package:portfolio_1/sections/about_section.dart';
+import 'package:portfolio_1/sections/hero_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,12 +16,21 @@ class _HomePageState extends State<HomePage> {
   PageController controller = PageController();
 
   int tab = 0;
-  final List<Map> tabs = [
-    {'title': 'About'},
-    {'title': 'Projects'},
-    {'title': 'Articles'},
-    {'title': 'Contact'},
+  late List<Map> tabs;
+
+  @override
+  void initState() {
+    super.initState();
+
+    tabs = [
+    {'title': 'About', 'screen': AboutSection()},
+    {'title': 'Projects', 'screen': AboutSection()},
+    {'title': 'Articles', 'screen': AboutSection()},
+    {'title': 'Contact', 'screen': AboutSection()},
   ];
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +53,7 @@ class _HomePageState extends State<HomePage> {
                   duration: const Duration(seconds: 2),
                   curve: Curves.fastLinearToSlowEaseIn)),
           ...List.generate(tabs.length, (index) {
-            return Container(
-              color: Colors.blueGrey.shade900,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Row(
-                  children: [
-                    Text(
-                      tabs[index]['title'],
-                      style: TextStyle(color: Colors.white, fontSize: 50),
-                    ),
-                  ],
-                ),
-              ),
-            );
+            return tabs[index]['screen'];
           }),
         ],
       ),

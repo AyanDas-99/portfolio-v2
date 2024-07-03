@@ -68,6 +68,14 @@ flutter:
     - assets/images/x_logo-white.png
     - assets/images/linkedin_smaller.png
     - assets/images/linkedin_smaller.png
+    - assets/images/profile.webp
+    - assets/images/flutter.png
+    - assets/images/dart.png
+    - assets/images/css.png
+    - assets/images/git.png
+    - assets/images/html.png
+    - assets/images/js.png
+    - assets/images/personal_brand_white.png
  
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -13,10 +13,9 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget{
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
         leadingWidth: 180,
-        // toolbarHeight: 100,
         centerTitle: true,
         leading: Center(
-          child: Text(
+          child:(tab != 0) ? Image.asset('assets/images/personal_brand_white.png', height: 50,) : Text(
             'Ayan Das',
             softWrap: true,
             style: Theme.of(context).textTheme.displayMedium,

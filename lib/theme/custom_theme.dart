@@ -19,7 +19,6 @@ class CustomTheme {
         ),
         displayMedium: TextStyle(
           fontSize: 27,
-          fontFamily: 'FiraCode',
           fontWeight: FontWeight.w500,
         ),
         bodyMedium: TextStyle(

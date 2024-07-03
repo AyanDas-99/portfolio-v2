@@ -28,11 +28,11 @@ class HeroSection extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.all(50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(height: 50),
           Responsive.isDesktop(context)
