@@ -11,26 +11,26 @@ class CustomTheme {
     ),
     fontFamily: 'OpenSans',
     textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontSize: 180,
-        fontFamily: 'FiraCode',
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
-      displayMedium: TextStyle(
-        fontSize: 150,
-        fontFamily: 'FiraCode',
-        fontWeight: FontWeight.bold,
-      ),
-      displaySmall: TextStyle(
-        fontFamily: 'FiraCode',
-        fontSize: 30,
-      ),
-      bodyMedium: TextStyle(
-        color: lightGrey,
-        fontSize: 20,
-      ),
-    ),
+        displayLarge: TextStyle(
+          fontSize: 180,
+          fontFamily: 'FiraCode',
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 27,
+          fontFamily: 'FiraCode',
+          fontWeight: FontWeight.w500,
+        ),
+        bodyMedium: TextStyle(
+          color: lightGrey,
+          fontSize: 25,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'FiraCode',
+          color: lightGrey,
+          fontSize: 18, 
+        )),
   );
   static const Color lightGrey = Color(0xFFA6A6A6);
   static const Color darkGrey = Color(0xFF3D3D3D);

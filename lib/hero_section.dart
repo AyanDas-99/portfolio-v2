@@ -27,9 +27,12 @@ class HeroSection extends StatelessWidget {
     ];
 
     final size = MediaQuery.of(context).size;
-    return SizedBox(
+    return Container(
+      padding: const EdgeInsets.all(50),
       width: MediaQuery.of(context).size.width,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const SizedBox(height: 50),
           Responsive.isDesktop(context)
@@ -53,11 +56,11 @@ class HeroSection extends StatelessWidget {
                           onPressed: goToProjects,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 80,
-                              vertical: 20,
+                              horizontal: 100,
+                              vertical: 7,
                             ),
                             child: Text(
-                              'Projects ${size.width}',
+                              'Projects',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -142,11 +145,11 @@ class HeroSection extends StatelessWidget {
                           onPressed: goToProjects,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 10,
+                              horizontal: 80,
+                              vertical: 7,
                             ),
                             child: Text(
-                              'Projects ${size.width}',
+                              'Projects',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!
@@ -170,34 +173,38 @@ class HeroSection extends StatelessWidget {
                   ],
                 ),
           const SizedBox(height: 50),
-          Wrap(
-            spacing: 50,
-            runSpacing: 20,
-            children: socials
-                .map((social) => InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                color: CustomTheme.lightGrey, width: 0.1)),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image.asset(
-                              social['icon1'] as String,
-                              width: 30,
-                            ),
-                            const SizedBox(width: 20),
-                            Text(social['title'] as String),
-                          ],
+          SizedBox(
+            width: size.width,
+            child: Wrap(
+              alignment: Responsive.isMobile(context) ? WrapAlignment.start : WrapAlignment.center,
+              spacing: 50,
+              runSpacing: 20,
+              children: socials
+                  .map((social) => InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding:
+                              const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              border: Border.all(
+                                  color: CustomTheme.lightGrey, width: 0.1)),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset(
+                                social['icon1'] as String,
+                                width: 30,
+                              ),
+                              const SizedBox(width: 20),
+                              Text(social['title'] as String, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontStyle: FontStyle.italic),),
+                            ],
+                          ),
                         ),
-                      ),
-                    ))
-                .toList(),
+                      ))
+                  .toList(),
+            ),
           )
         ],
       ),
