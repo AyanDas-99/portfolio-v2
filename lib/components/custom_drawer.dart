@@ -7,12 +7,19 @@ class CustomDrawer extends StatelessWidget {
     super.key,
     required this.tabs,
     required this.controller,
-    required this.tab,
+    required this.tab, required this.keys,
   });
 
   final List<Map> tabs;
   final PageController controller;
   final int tab;
+  final List<GlobalKey> keys;
+
+  void scroll(GlobalKey key) async {
+    Scrollable.ensureVisible(key.currentContext!,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastLinearToSlowEaseIn);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +53,7 @@ class CustomDrawer extends StatelessWidget {
               tabs.length,
               (index) => Expanded(
                 child: ListTile(
-                  onTap: () {
-                    controller.animateToPage(index + 1,
-                        duration: const Duration(seconds: 2),
-                        curve: Curves.fastLinearToSlowEaseIn);
-                  },
+                  onTap: () => scroll(keys[index+1]),
                   title: Text(
                     tabs[index]['title'],
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(

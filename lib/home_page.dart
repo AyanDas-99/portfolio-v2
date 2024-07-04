@@ -1,4 +1,3 @@
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/components/custom_appbar.dart';
 import 'package:portfolio_1/components/custom_drawer.dart';
@@ -17,47 +16,74 @@ class _HomePageState extends State<HomePage> {
 
   int tab = 0;
   late List<Map> tabs;
+  final keys = List.generate(5, (index) => GlobalKey());
 
   @override
   void initState() {
     super.initState();
 
     tabs = [
-    {'title': 'About', 'screen': AboutSection()},
-    {'title': 'Projects', 'screen': AboutSection()},
-    {'title': 'Articles', 'screen': AboutSection()},
-    {'title': 'Contact', 'screen': AboutSection()},
-  ];
+      {'title': 'About', 'screen': AboutSection(key: keys[1])},
+      {'title': 'Projects', 'screen': AboutSection(key: keys[2])},
+      {'title': 'Articles', 'screen': AboutSection(key: keys[3])},
+      {'title': 'Contact', 'screen': AboutSection(key: keys[4])},
+    ];
+
+    controller.addListener(_onScroll);
   }
 
-  
+  void _onScroll() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkVisibility();
+    });
+  }
+
+  void _checkVisibility() {
+    for (int i = 0; i < keys.length; i++) {
+      RenderObject? renderObject = keys[i].currentContext?.findRenderObject();
+      if (renderObject is RenderBox) {
+        double widgetPosition = renderObject.localToGlobal(Offset.zero).dy;
+        double pageHeight = MediaQuery.of(context).size.height;
+        if (widgetPosition <= pageHeight * 0.25) {
+          setState(() {
+            tab = i;
+          });
+        }
+      }
+    }
+  }
+
+  void scroll(GlobalKey key) async {
+    Scrollable.ensureVisible(key.currentContext!,
+        duration: const Duration(seconds: 1),
+        curve: Curves.fastLinearToSlowEaseIn,
+        alignmentPolicy: ScrollPositionAlignmentPolicy.explicit);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(tabs: tabs, controller: controller, tab: tab),
-      appBar: CustomAppbar(tabs: tabs, controller: controller, tab: tab),
-      body: ExpandablePageView(
-        scrollDirection: Axis.vertical,
-        alignment: Alignment.topCenter,
-        pageSnapping: false,
+      drawer: CustomDrawer(
+          tabs: tabs, controller: controller, tab: tab, keys: keys),
+      appBar: CustomAppbar(
+        tabs: tabs,
+        keys: keys,
+        tab: tab,
+      ),
+      body: SingleChildScrollView(
         controller: controller,
-        onPageChanged: (value) {
-          setState(() {
-            tab = value;
-          });
-        },
-        children: [
-          HeroSection(
-              goToProjects: () => controller.animateToPage(2,
-                  duration: const Duration(seconds: 2),
-                  curve: Curves.fastLinearToSlowEaseIn)),
-          ...List.generate(tabs.length, (index) {
-            return tabs[index]['screen'];
-          }),
-        ],
+        child: Column(
+          children: [
+            Container(
+                color: Colors.grey,
+                child: HeroSection(
+                  goToProjects: () => scroll(keys[2]),
+                  key: keys[0],
+                )),
+            ...tabs.map((tab) => tab['screen']),
+          ],
+        ),
       ),
     );
   }
 }
-
