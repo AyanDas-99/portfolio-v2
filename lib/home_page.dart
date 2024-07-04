@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/components/custom_appbar.dart';
 import 'package:portfolio_1/components/custom_drawer.dart';
+import 'package:portfolio_1/projects/view/projects_section.dart';
 import 'package:portfolio_1/sections/about_section.dart';
 import 'package:portfolio_1/sections/hero_section.dart';
 
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
     tabs = [
       {'title': 'About', 'screen': AboutSection(key: keys[1])},
-      {'title': 'Projects', 'screen': AboutSection(key: keys[2])},
+      {'title': 'Projects', 'screen': ProjectsSection(key: keys[2])},
       {'title': 'Articles', 'screen': AboutSection(key: keys[3])},
       {'title': 'Contact', 'screen': AboutSection(key: keys[4])},
     ];
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       if (renderObject is RenderBox) {
         double widgetPosition = renderObject.localToGlobal(Offset.zero).dy;
         double pageHeight = MediaQuery.of(context).size.height;
-        if (widgetPosition <= pageHeight * 0.25) {
+        if (widgetPosition <= pageHeight/2) {
           setState(() {
             tab = i;
           });
@@ -74,12 +75,10 @@ class _HomePageState extends State<HomePage> {
         controller: controller,
         child: Column(
           children: [
-            Container(
-                color: Colors.grey,
-                child: HeroSection(
-                  goToProjects: () => scroll(keys[2]),
-                  key: keys[0],
-                )),
+            HeroSection(
+              goToProjects: () => scroll(keys[2]),
+              key: keys[0],
+            ),
             ...tabs.map((tab) => tab['screen']),
           ],
         ),

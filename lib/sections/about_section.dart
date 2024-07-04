@@ -218,7 +218,7 @@ class AboutSection extends StatelessWidget {
                   const SizedBox(height: 50),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.5, color: Colors.white),
+                      border: Border.all(width: 0.1, color: CustomTheme.lightGrey),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     padding: const EdgeInsets.all(10),
