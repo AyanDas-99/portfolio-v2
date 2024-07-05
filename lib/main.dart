@@ -38,3 +38,10 @@ class MyApp extends StatelessWidget {
     });
   }
 }
+
+
+// Adding new project
+
+// Directly add new project data in firestore
+// Check previous projects in firestore or lib/projects/models to get the schema
+// In the videos list, the video should be an embed src link from youtube

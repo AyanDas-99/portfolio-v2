@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
+import 'package:portfolio_1/state/utils/launch_url.dart';
 import 'package:portfolio_1/theme/custom_theme.dart';
 
 class HeroSection extends StatelessWidget {
@@ -12,17 +13,20 @@ class HeroSection extends StatelessWidget {
       {
         'title': 'Github',
         'icon': 'assets/images/github_icon.png',
-        'icon1': 'assets/images/github-mark-white.png'
+        'icon1': 'assets/images/github-mark-white.png',
+        'link': 'https://github.com/AyanDas-99'
       },
       {
         'title': 'X',
         'icon': 'assets/images/x_logo-black.png',
-        'icon1': 'assets/images/x_logo-white.png'
+        'icon1': 'assets/images/x_logo-white.png',
+        'link': 'https://x.com/AyanDas_'
       },
       {
         'title': 'LinkedIn',
         'icon': 'assets/images/linkedin_smaller.png',
         'icon1': 'assets/images/linkedin_smaller.png',
+        'link': 'https://www.linkedin.com/in/ayan-das-b2a9831b8'
       },
     ];
 
@@ -30,7 +34,8 @@ class HeroSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 50),
       width: MediaQuery.of(context).size.width,
-      constraints: BoxConstraints(minHeight: MediaQuery.of(context).size.height),
+      constraints:
+          BoxConstraints(minHeight: MediaQuery.of(context).size.height),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -177,15 +182,17 @@ class HeroSection extends StatelessWidget {
           SizedBox(
             width: size.width,
             child: Wrap(
-              alignment: Responsive.isMobile(context) ? WrapAlignment.start : WrapAlignment.center,
+              alignment: Responsive.isMobile(context)
+                  ? WrapAlignment.start
+                  : WrapAlignment.center,
               spacing: 50,
               runSpacing: 20,
               children: socials
                   .map((social) => InkWell(
-                        onTap: () {},
+                        onTap: () => launchLink(social['link'] as String),
                         child: Container(
-                          padding:
-                              const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 30),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(
@@ -199,7 +206,13 @@ class HeroSection extends StatelessWidget {
                                 width: 30,
                               ),
                               const SizedBox(width: 20),
-                              Text(social['title'] as String, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontStyle: FontStyle.italic),),
+                              Text(
+                                social['title'] as String,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(fontStyle: FontStyle.italic),
+                              ),
                             ],
                           ),
                         ),

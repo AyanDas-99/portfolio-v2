@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/projects/providers/projects_provider.dart';
+import 'package:portfolio_1/projects/view/project_view.dart';
 import 'package:provider/provider.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -15,17 +16,22 @@ class ProjectsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Projects'),
+          const Text('... / Projects ...'),
           const SizedBox(height: 50),
           Consumer<ProjectsProvider>(
               builder: (context, projectsProvider, child) {
             if (projectsProvider.projects == null) {
-              return CircularProgressIndicator();
+              return const ProjectViewLoading();
             }
             return Column(
-                children: projectsProvider.projects!
-                    .map((project) => Text(project.toString()))
-                    .toList());
+              children: List.generate(
+                projectsProvider.projects!.length,
+                (index) => ProjectView(
+                  project: projectsProvider.projects![index],
+                  reversed: index.isEven,
+                ),
+              ),
+            );
           }),
         ],
       ),

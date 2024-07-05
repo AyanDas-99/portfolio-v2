@@ -4,9 +4,9 @@ import 'package:equatable/equatable.dart';
 class Project extends Equatable {
   final String title;
   final String description;
-  final List<String>? images;
-  final List<String>? videos;
-  final String live;
+  final List<String> images;
+  final List<String> videos;
+  final String? live;
   final String github;
   final List<String> concepts;
 
@@ -25,11 +25,11 @@ class Project extends Equatable {
         description: map['description'] as String,
         images: map['images'] != null
             ? List<String>.from((map['images'] as List<dynamic>))
-            : null,
+            : [],
         videos: map['videos'] != null
             ? List<String>.from((map['videos'] as List<dynamic>))
-            : null,
-        live: map['live'] as String,
+            : [],
+        live: map['live'] != null ? map['live'] as String : null,
         github: map['github'] as String,
         concepts: List<String>.from(
           (map['concepts'] as List<dynamic>),
