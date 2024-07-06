@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/components/custom_appbar.dart';
 import 'package:portfolio_1/components/custom_drawer.dart';
+import 'package:portfolio_1/contact_section/contact_section.dart';
 import 'package:portfolio_1/projects/view/projects_section.dart';
+import 'package:portfolio_1/responsive/responsive.dart';
 import 'package:portfolio_1/sections/about_section.dart';
 import 'package:portfolio_1/sections/hero_section.dart';
 
@@ -17,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
   int tab = 0;
   late List<Map> tabs;
-  final keys = List.generate(5, (index) => GlobalKey());
+  final keys = List.generate(4, (index) => GlobalKey());
 
   @override
   void initState() {
@@ -26,8 +28,7 @@ class _HomePageState extends State<HomePage> {
     tabs = [
       {'title': 'About', 'screen': AboutSection(key: keys[1])},
       {'title': 'Projects', 'screen': ProjectsSection(key: keys[2])},
-      {'title': 'Articles', 'screen': AboutSection(key: keys[3])},
-      {'title': 'Contact', 'screen': AboutSection(key: keys[4])},
+      {'title': 'Contact', 'screen': ContactSection(key: keys[3])},
     ];
 
     controller.addListener(_onScroll);
@@ -73,14 +74,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         controller: controller,
-        child: Column(
-          children: [
-            HeroSection(
-              goToProjects: () => scroll(keys[2]),
-              key: keys[0],
-            ),
-            ...tabs.map((tab) => tab['screen']),
-          ],
+        child: Padding(
+          padding: Responsive.isDesktop(context) ? const EdgeInsets.symmetric(horizontal: 100) : Responsive.isMobile(context) ? const EdgeInsets.symmetric(horizontal: 25) : const EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+            children: [
+              HeroSection(
+                goToProjects: () => scroll(keys[2]),
+                key: keys[0],
+              ),
+              const SizedBox(height: 30),
+              ...tabs.map((tab) => tab['screen']),
+              const SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );

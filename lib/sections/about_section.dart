@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
 import 'package:portfolio_1/theme/custom_theme.dart';
@@ -7,6 +9,7 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final techstack = [
       {
         'image': 'assets/images/dart.png',
@@ -38,12 +41,11 @@ class AboutSection extends StatelessWidget {
       },
     ];
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-      constraints:
-          BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-      width: MediaQuery.of(context).size.width,
+      constraints: BoxConstraints(minHeight: size.height),
+      width: size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             '.../About me ...',
@@ -106,8 +108,10 @@ class AboutSection extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
-                                    Image.asset(tech['image'] as String,
-                                        height: 50),
+                                    Image.asset(
+                                      tech['image'] as String,
+                                      height: 50,
+                                    ),
                                     Text(
                                       tech['name'] as String,
                                       style:
@@ -218,7 +222,8 @@ class AboutSection extends StatelessWidget {
                   const SizedBox(height: 50),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(width: 0.1, color: CustomTheme.lightGrey),
+                      border:
+                          Border.all(width: 0.1, color: CustomTheme.lightGrey),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     padding: const EdgeInsets.all(10),
@@ -232,7 +237,8 @@ class AboutSection extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               children: [
-                                Image.asset(tech['image'] as String, height: 50),
+                                Image.asset(tech['image'] as String,
+                                    height: min(50, size.width * 0.09)),
                                 Text(
                                   tech['name'] as String,
                                   style: Theme.of(context).textTheme.bodySmall,
@@ -272,8 +278,8 @@ class AboutSection extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        border:
-                            Border.all(color: CustomTheme.lightGrey, width: 0.1)),
+                        border: Border.all(
+                            color: CustomTheme.lightGrey, width: 0.1)),
                     padding: const EdgeInsets.all(15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,8 +299,8 @@ class AboutSection extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        border:
-                            Border.all(color: CustomTheme.lightGrey, width: 0.1)),
+                        border: Border.all(
+                            color: CustomTheme.lightGrey, width: 0.1)),
                     padding: const EdgeInsets.all(15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,18 +308,20 @@ class AboutSection extends StatelessWidget {
                         Text('Favourite packages',
                             style: Theme.of(context).textTheme.bodyMedium),
                         const SizedBox(height: 10),
-                        Text('Riverpod / flutter_animate',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall!
-                                .copyWith(color: Colors.white)),
+                        Text(
+                          'Riverpod / flutter_animate',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: Colors.white),
+                        ),
                       ],
                     ),
                   )
                 ],
               ),
             ),
-          const SizedBox(width: 50),
+            const SizedBox(height: 100)
         ],
       ),
     );

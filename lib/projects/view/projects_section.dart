@@ -9,7 +9,7 @@ class ProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+      // padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       constraints:
           BoxConstraints(minHeight: MediaQuery.of(context).size.height),
       width: MediaQuery.of(context).size.width,
