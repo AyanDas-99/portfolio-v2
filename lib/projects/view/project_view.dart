@@ -190,7 +190,7 @@ class ProjectView extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(width: 50),
+          const SizedBox(height: 50),
           // Media
           Column(
             mainAxisSize: MainAxisSize.min,

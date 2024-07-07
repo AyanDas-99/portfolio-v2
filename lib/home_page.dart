@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                 goToProjects: () => scroll(keys[2]),
                 key: keys[0],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 100),
               ...tabs.map((tab) => tab['screen']),
               const SizedBox(height: 50),
             ],
