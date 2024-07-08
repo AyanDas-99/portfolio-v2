@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_1/home_page.dart';
 import 'package:portfolio_1/state/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -6,13 +7,10 @@ class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
     required this.tabs,
-    required this.controller,
-    required this.tab, required this.keys,
+    required this.keys,
   });
 
   final List<Map> tabs;
-  final PageController controller;
-  final int tab;
   final List<GlobalKey> keys;
 
   void scroll(GlobalKey key) async {
@@ -53,12 +51,17 @@ class CustomDrawer extends StatelessWidget {
               tabs.length,
               (index) => Expanded(
                 child: ListTile(
-                  onTap: () => scroll(keys[index+1]),
-                  title: Text(
-                    tabs[index]['title'],
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: tab == index + 1 ? Colors.white : null),
-                  ),
+                  onTap: () => scroll(keys[index + 1]),
+                  title: Consumer<VisibleTabProvider>(
+                      builder: (context, visibleTab, child) {
+                    return Text(
+                      tabs[index]['title'],
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: visibleTab.tab == index + 1
+                              ? Colors.white
+                              : null),
+                    );
+                  }),
                 ),
               ),
             ),

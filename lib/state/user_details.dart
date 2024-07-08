@@ -17,5 +17,11 @@ final socials = [
     'icon1': 'assets/images/linkedin_smaller.png',
     'link': 'https://www.linkedin.com/in/ayan-das-b2a9831b8'
   },
+  {
+    'title': 'Email',
+    'icon': 'assets/images/linkedin_smaller.png',
+    'icon1': 'assets/images/linkedin_smaller.png',
+    'link': 'mailto: ayandas9531@gmail.com',
+  }
 ];
 

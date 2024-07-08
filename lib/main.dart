@@ -15,7 +15,8 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeModeProvider()),
-        ChangeNotifierProvider(create: (context) => ProjectsProvider())
+        ChangeNotifierProvider(create: (context) => ProjectsProvider()),
+        ChangeNotifierProvider(create: (context) => VisibleTabProvider())
       ],
       child: const MyApp(),
     ),

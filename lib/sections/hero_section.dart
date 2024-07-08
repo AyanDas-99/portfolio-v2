@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
 import 'package:portfolio_1/state/user_details.dart';
 import 'package:portfolio_1/state/utils/launch_url.dart';
@@ -13,10 +14,8 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
-      constraints:
-          BoxConstraints(minHeight: MediaQuery.of(context).size.height),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -139,12 +138,13 @@ class HeroSection extends StatelessWidget {
                         ),
                         child: Text(
                           'Projects',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: Colors.black,
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: min(size.width * 0.05, 25)
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                  color: Colors.black,
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: min(size.width * 0.05, 25)),
                         ),
                       ),
                     ),
@@ -171,15 +171,15 @@ class HeroSection extends StatelessWidget {
               spacing: 50,
               runSpacing: 20,
               children: socials
-                  .map((social) => InkWell(
-                        onTap: () => launchLink(social['link'] as String),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 30),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              border: Border.all(
-                                  color: CustomTheme.lightGrey, width: 0.1)),
+                  .map((social) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 30),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(
+                                color: CustomTheme.lightGrey, width: 0.1)),
+                        child: InkWell(
+                          onTap: () => launchLink(social['link'] as String),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -205,6 +205,6 @@ class HeroSection extends StatelessWidget {
           )
         ],
       ),
-    );
+    ).animate().fadeIn();
   }
 }

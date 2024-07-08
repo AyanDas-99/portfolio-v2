@@ -18,6 +18,7 @@ class ProjectView extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 60),
       child: Responsive.isDesktop(context) ? Row(
+        textDirection:reversed ? TextDirection.rtl : TextDirection.ltr,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(

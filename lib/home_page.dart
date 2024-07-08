@@ -6,6 +6,18 @@ import 'package:portfolio_1/projects/view/projects_section.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
 import 'package:portfolio_1/sections/about_section.dart';
 import 'package:portfolio_1/sections/hero_section.dart';
+import 'package:provider/provider.dart';
+
+class VisibleTabProvider extends ChangeNotifier {
+  int _tab = 0;
+
+  int get tab => _tab;
+
+  void update(int newTab) {
+    _tab = newTab;
+    notifyListeners();
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,12 +37,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    tabs = [
-      {'title': 'About', 'screen': AboutSection(key: keys[1])},
-      {'title': 'Projects', 'screen': ProjectsSection(key: keys[2])},
-      {'title': 'Contact', 'screen': ContactSection(key: keys[3])},
-    ];
-
     controller.addListener(_onScroll);
   }
 
@@ -46,10 +52,8 @@ class _HomePageState extends State<HomePage> {
       if (renderObject is RenderBox) {
         double widgetPosition = renderObject.localToGlobal(Offset.zero).dy;
         double pageHeight = MediaQuery.of(context).size.height;
-        if (widgetPosition <= pageHeight/2) {
-          setState(() {
-            tab = i;
-          });
+        if (widgetPosition <= pageHeight / 2) {
+          context.read<VisibleTabProvider>().update(i);
         }
       }
     }
@@ -64,18 +68,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    tabs = [
+      {'title': 'About', 'screen': AboutSection(key: keys[1])},
+      {'title': 'Projects', 'screen': ProjectsSection(key: keys[2])},
+      {'title': 'Contact', 'screen': ContactSection(key: keys[3])},
+    ];
     return Scaffold(
-      drawer: CustomDrawer(
-          tabs: tabs, controller: controller, tab: tab, keys: keys),
-      appBar: CustomAppbar(
-        tabs: tabs,
-        keys: keys,
-        tab: tab,
-      ),
+      drawer: CustomDrawer(tabs: tabs, keys: keys),
+      appBar: CustomAppbar(tabs: tabs, keys: keys),
       body: SingleChildScrollView(
         controller: controller,
         child: Padding(
-          padding: Responsive.isDesktop(context) ? const EdgeInsets.symmetric(horizontal: 100) : Responsive.isMobile(context) ? const EdgeInsets.symmetric(horizontal: 25) : const EdgeInsets.symmetric(horizontal: 50),
+          padding: Responsive.isDesktop(context)
+              ? const EdgeInsets.symmetric(horizontal: 100)
+              : Responsive.isMobile(context)
+                  ? const EdgeInsets.symmetric(horizontal: 25)
+                  : const EdgeInsets.symmetric(horizontal: 50),
           child: Column(
             children: [
               HeroSection(
