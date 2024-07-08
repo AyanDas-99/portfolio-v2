@@ -17,7 +17,7 @@ class NetworkImageView extends StatelessWidget {
               builder: (context) => Center(
                 child: FadeInImage(
                   placeholder: const AssetImage(
-                      "assets/images/personal_brand_white.png"),
+                      "assets/images/personal_brand_white.webp"),
                   image: NetworkImage(url),
                   fit: BoxFit.fitWidth,
                   height: 500,
@@ -27,11 +27,11 @@ class NetworkImageView extends StatelessWidget {
           },
           child: FadeInImage(
             placeholder:
-                const AssetImage("assets/images/personal_brand_white.png"),
+                const AssetImage("assets/images/personal_brand_white.webp"),
             image: NetworkImage(url),
             fit: BoxFit.fitWidth,
             imageErrorBuilder: (context, error, stackTrace) {
-              return Image.asset("assets/images/personal_brand_white.png");
+              return Image.asset("assets/images/personal_brand_white.webp");
             },
           ),
         ),

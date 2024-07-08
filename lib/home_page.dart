@@ -73,7 +73,14 @@ class _HomePageState extends State<HomePage> {
       {'title': 'Projects', 'screen': ProjectsSection(key: keys[2])},
       {'title': 'Contact', 'screen': ContactSection(key: keys[3])},
     ];
-    return Scaffold(
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/black_background.webp'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child:Scaffold(
       drawer: CustomDrawer(tabs: tabs, keys: keys),
       appBar: CustomAppbar(tabs: tabs, keys: keys),
       body: SingleChildScrollView(
@@ -97,6 +104,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    ) ,
     );
   }
 }

@@ -16,31 +16,31 @@ class AboutSection extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final techstack = [
       {
-        'image': 'assets/images/dart.png',
+        'image': 'assets/images/dart.webp',
         'name': 'Dart',
       },
       {
-        'image': 'assets/images/flutter.png',
+        'image': 'assets/images/flutter.webp',
         'name': 'Flutter',
       },
       {
-        'image': 'assets/images/html.png',
+        'image': 'assets/images/html.webp',
         'name': 'HTML',
       },
       {
-        'image': 'assets/images/css.png',
+        'image': 'assets/images/css.webp',
         'name': 'CSS',
       },
       {
-        'image': 'assets/images/js.png',
+        'image': 'assets/images/js.webp',
         'name': 'JS',
       },
       {
-        'image': 'assets/images/git.png',
+        'image': 'assets/images/git.webp',
         'name': 'Git',
       },
       {
-        'image': 'assets/images/github-mark-white.png',
+        'image': 'assets/images/github-mark-white.webp',
         'name': 'Github',
       },
     ];

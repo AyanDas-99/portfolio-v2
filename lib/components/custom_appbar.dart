@@ -31,7 +31,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
       leading: Center(
         child: (context.watch<VisibleTabProvider>().tab != 0)
             ? Image.asset(
-                'assets/images/personal_brand_white.png',
+                'assets/images/personal_brand_white.webp',
                 height: 50,
               )
             : Text(

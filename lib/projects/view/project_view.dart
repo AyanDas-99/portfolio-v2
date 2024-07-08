@@ -68,7 +68,7 @@ class ProjectView extends StatelessWidget {
                                 launchLink(project.github);
                               },
                               child: Image.asset(
-                                "assets/images/github-mark-white.png",
+                                "assets/images/github-mark-white.webp",
                                 fit: BoxFit.contain,
                               )),
                         )),
@@ -172,7 +172,7 @@ class ProjectView extends StatelessWidget {
                         child: TextButton(
                             onPressed: () {},
                             child: Image.asset(
-                              "assets/images/github-mark-white.png",
+                              "assets/images/github-mark-white.webp",
                               fit: BoxFit.contain,
                             )),
                       )),

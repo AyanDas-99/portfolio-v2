@@ -1,11 +1,8 @@
-import 'dart:math';
-
+import 'dart:math' show min;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio_1/components/social_links.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
-import 'package:portfolio_1/state/user_details.dart';
-import 'package:portfolio_1/state/utils/launch_url.dart';
-import 'package:portfolio_1/theme/custom_theme.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key, required this.goToProjects});
@@ -162,47 +159,7 @@ class HeroSection extends StatelessWidget {
               ],
             ),
           const SizedBox(height: 50),
-          SizedBox(
-            width: size.width,
-            child: Wrap(
-              alignment: Responsive.isMobile(context)
-                  ? WrapAlignment.start
-                  : WrapAlignment.center,
-              spacing: 50,
-              runSpacing: 20,
-              children: socials
-                  .map((social) => Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 30),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            border: Border.all(
-                                color: CustomTheme.lightGrey, width: 0.1)),
-                        child: InkWell(
-                          onTap: () => launchLink(social['link'] as String),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                social['icon1'] as String,
-                                width: 30,
-                              ),
-                              const SizedBox(width: 20),
-                              Text(
-                                social['title'] as String,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(fontStyle: FontStyle.italic),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          )
+          SocialLinks(size: size)
         ],
       ),
     ).animate().fadeIn();

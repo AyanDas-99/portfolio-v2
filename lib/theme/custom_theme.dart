@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.black,
+    scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.black,
       shadowColor: Colors.black,
