@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     context.read<ProjectsProvider>().loadProjects();
     return Consumer<ThemeModeProvider>(builder: (context, thememode, child) {
       return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Ayan Das',
         darkTheme: CustomTheme.darkTheme,
         debugShowCheckedModeBanner: false,
         themeMode: thememode.mode,
