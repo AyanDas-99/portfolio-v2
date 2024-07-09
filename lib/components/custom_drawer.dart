@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_1/home_page.dart';
 import 'package:portfolio_1/state/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';
-
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
@@ -22,7 +21,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Colors.black,
       shadowColor: Colors.white,
       elevation: 3,
       child: Padding(
