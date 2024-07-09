@@ -11,7 +11,8 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SizedBox(
+    return Container(
+      constraints: BoxConstraints(minHeight: size.height),
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,20 +38,14 @@ class HeroSection extends StatelessWidget {
                           backgroundColor:
                               WidgetStatePropertyAll(Colors.white)),
                       onPressed: goToProjects,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 100,
-                          vertical: 7,
-                        ),
-                        child: Text(
-                          'Projects',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                  color: Colors.black,
-                                  fontStyle: FontStyle.italic),
-                        ),
+                      child: Text(
+                        'Projects',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(
+                                color: Colors.black,
+                                fontStyle: FontStyle.italic),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -162,6 +157,6 @@ class HeroSection extends StatelessWidget {
           SocialLinks(size: size)
         ],
       ),
-    ).animate().fadeIn();
+    ).animate().scaleY(delay: 1.seconds, duration: 1.seconds, curve: Curves.fastLinearToSlowEaseIn);
   }
 }

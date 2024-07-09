@@ -80,31 +80,31 @@ class _HomePageState extends State<HomePage> {
           fit: BoxFit.cover,
         ),
       ),
-      child:Scaffold(
-      drawer: CustomDrawer(tabs: tabs, keys: keys),
-      appBar: CustomAppbar(tabs: tabs, keys: keys),
-      body: SingleChildScrollView(
-        controller: controller,
-        child: Padding(
-          padding: Responsive.isDesktop(context)
-              ? const EdgeInsets.symmetric(horizontal: 100)
-              : Responsive.isMobile(context)
-                  ? const EdgeInsets.symmetric(horizontal: 25)
-                  : const EdgeInsets.symmetric(horizontal: 50),
-          child: Column(
-            children: [
-              HeroSection(
-                goToProjects: () => scroll(keys[2]),
-                key: keys[0],
-              ),
-              const SizedBox(height: 100),
-              ...tabs.map((tab) => tab['screen']),
-              const SizedBox(height: 50),
-            ],
+      child: Scaffold(
+        drawer: CustomDrawer(tabs: tabs, keys: keys),
+        appBar: CustomAppbar(tabs: tabs, keys: keys),
+        body: SingleChildScrollView(
+          controller: controller,
+          child: Padding(
+            padding: Responsive.isDesktop(context)
+                ? const EdgeInsets.symmetric(horizontal: 100)
+                : Responsive.isMobile(context)
+                    ? const EdgeInsets.symmetric(horizontal: 25)
+                    : const EdgeInsets.symmetric(horizontal: 50),
+            child: Column(
+              children: [
+                HeroSection(
+                  goToProjects: () => scroll(keys[2]),
+                  key: keys[0],
+                ),
+                const SizedBox(height: 100),
+                ...tabs.map((tab) => tab['screen']),
+                const SizedBox(height: 50),
+              ],
+            ),
           ),
         ),
       ),
-    ) ,
     );
   }
 }

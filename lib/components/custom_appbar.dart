@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_1/components/download_resume_button.dart';
 import 'package:portfolio_1/home_page.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
-import 'package:portfolio_1/state/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';
 
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
@@ -19,7 +19,7 @@ class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   State<CustomAppbar> createState() => _CustomAppbarState();
 
   @override
-  Size get preferredSize => AppBar().preferredSize;
+  Size get preferredSize => const Size.fromHeight(70);
 }
 
 class _CustomAppbarState extends State<CustomAppbar> {
@@ -72,23 +72,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
                   ),
               ],
             ),
-      actions: [
-        if (Responsive.isMobile(context))
-          IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-              icon: const Icon(Icons.menu)),
-        if (!Responsive.isMobile(context))
-          IconButton(
-              onPressed: () {
-                Provider.of<ThemeModeProvider>(context, listen: false).toggle();
-              },
-              icon: Provider.of<ThemeModeProvider>(context).mode ==
-                      ThemeMode.light
-                  ? const Icon(Icons.light_mode)
-                  : const Icon(Icons.dark_mode))
-      ],
+      actions: const [DownloadResumeBtn(),SizedBox(width: 20)],
     );
   }
 }
