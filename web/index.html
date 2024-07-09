@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,12 +28,26 @@
   <link rel="apple-touch-icon" href="icons/icon-192.webp">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>portfolio_1</title>
   <link rel="manifest" href="manifest.json">
+  <!-- Custom style -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <!-- Custom loader -->
+  <span class="loader"></span>
+
+  <!-- Remove loader -->
+  <script>
+    window.addEventListener("flutter-first-frame", function () {
+      var element = document.getElementsByClassName("loader");
+      element[0].parentNode.removeChild(element[0]);
+    }); 
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
