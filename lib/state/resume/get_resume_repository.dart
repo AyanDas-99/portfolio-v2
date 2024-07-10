@@ -1,10 +1,11 @@
 import 'dart:developer' as dev;
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_storage/firebase_storage.dart' deferred as storage;
 
 class GetResumeRepository {
   Future<String?> getResumeDownloadUrl() async {
     try {
-      final storageRef = FirebaseStorage.instance.ref();
+      await storage.loadLibrary();
+      final storageRef = storage.FirebaseStorage.instance.ref();
       final pathRef = storageRef.child("doc/resume.pdf");
       return pathRef.getDownloadURL();
     } catch (e) {
