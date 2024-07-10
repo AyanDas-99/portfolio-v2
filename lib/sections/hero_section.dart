@@ -1,6 +1,8 @@
 import 'dart:math' show min;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio_1/components/download_resume_button.dart';
+import 'package:portfolio_1/components/go_to_projects_btn.dart';
 import 'package:portfolio_1/components/social_links.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
 
@@ -33,30 +35,8 @@ class HeroSection extends StatelessWidget {
                           .copyWith(fontSize: size.width * 0.08),
                     ),
                     const Spacer(),
-                    ElevatedButton(
-                      style: const ButtonStyle(
-                          backgroundColor:
-                              WidgetStatePropertyAll(Colors.white)),
-                      onPressed: goToProjects,
-                      child: Text(
-                        'Projects',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(
-                                color: Colors.black,
-                                fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                          color: Colors.black,
-                          onPressed: goToProjects,
-                          icon: const Icon(Icons.arrow_forward)),
-                    ),
+
+                    GoToProjectsBtn(goToProjects: goToProjects, size: size),
                   ],
                 ),
                 const SizedBox(height: 30),
@@ -84,6 +64,7 @@ class HeroSection extends StatelessWidget {
             )
           else
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -116,47 +97,20 @@ class HeroSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 50),
-                Row(
-                  children: [
-                    ElevatedButton(
-                      style: const ButtonStyle(
-                          backgroundColor:
-                              WidgetStatePropertyAll(Colors.white)),
-                      onPressed: goToProjects,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: size.width * 0.1,
-                          vertical: 7,
-                        ),
-                        child: Text(
-                          'Projects',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                  color: Colors.black,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: min(size.width * 0.05, 25)),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    CircleAvatar(
-                      radius: min(30, size.width * 0.06),
-                      backgroundColor: Colors.white,
-                      child: IconButton(
-                          color: Colors.black,
-                          onPressed: goToProjects,
-                          icon: const Icon(Icons.arrow_forward)),
-                    ),
-                  ],
-                ),
+                GoToProjectsBtn(goToProjects: goToProjects, size: size),
+
+                const SizedBox(height: 50),
+                if(Responsive.isMobile(context))
+                const DownloadResumeBtn(),
               ],
             ),
           const SizedBox(height: 50),
           SocialLinks(size: size)
         ],
       ),
-    ).animate().scaleY(delay: 1.seconds, duration: 1.seconds, curve: Curves.fastLinearToSlowEaseIn);
+    ).animate().scaleY(
+        delay: 1.seconds,
+        duration: 1.seconds,
+        curve: Curves.fastLinearToSlowEaseIn);
   }
 }

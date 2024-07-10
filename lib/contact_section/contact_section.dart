@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio_1/components/download_resume_button.dart';
 import 'package:portfolio_1/components/social_links.dart';
 import 'package:portfolio_1/home_page.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
@@ -86,6 +87,10 @@ class ContactSection extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             SocialLinks(size: size),
+            if (Responsive.isMobile(context)) ...const [
+              SizedBox(height: 30),
+              DownloadResumeBtn(),
+            ]
           ],
         ),
       )

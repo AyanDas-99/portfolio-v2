@@ -41,7 +41,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
               ),
       ),
       title: (Responsive.isMobile(context))
-          ? null
+          ? null 
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -72,7 +72,15 @@ class _CustomAppbarState extends State<CustomAppbar> {
                   ),
               ],
             ),
-      actions: const [DownloadResumeBtn(),SizedBox(width: 20)],
+      actions: [
+        if(Responsive.isMobile(context))
+        IconButton(onPressed: (){
+          Scaffold.of(context).openDrawer();
+        }, icon: const Icon(Icons.menu))
+        else 
+        const DownloadResumeBtn(),
+        const SizedBox(width: 20),
+      ],
     );
   }
 }

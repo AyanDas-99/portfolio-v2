@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_1/components/download_resume_button.dart';
 import 'package:portfolio_1/home_page.dart';
-import 'package:portfolio_1/state/theme/theme_mode_provider.dart';
 import 'package:provider/provider.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
@@ -27,22 +28,17 @@ class CustomDrawer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 20),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Ayan.Das',
-                    style: Theme.of(context).textTheme.displaySmall),
-                IconButton(
-                    onPressed: () {
-                      Provider.of<ThemeModeProvider>(context, listen: false)
-                          .toggle();
-                    },
-                    icon: Provider.of<ThemeModeProvider>(context).mode ==
-                            ThemeMode.light
-                        ? const Icon(Icons.light_mode)
-                        : const Icon(Icons.dark_mode))
+                Text(
+                  'Ayan.Das',
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+                const SizedBox(height: 10),
               ],
             ),
             const Spacer(),
@@ -65,6 +61,8 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            const DownloadResumeBtn(),
+            const SizedBox(height: 20)
           ],
         ),
       ),

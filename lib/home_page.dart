@@ -27,7 +27,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  PageController controller = PageController();
+  late ScrollController controller;
 
   int tab = 0;
   late List<Map> tabs;
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
+    controller = ScrollController();
     controller.addListener(_onScroll);
   }
 
@@ -99,7 +99,6 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 100),
                 ...tabs.map((tab) => tab['screen']),
-                const SizedBox(height: 50),
               ],
             ),
           ),

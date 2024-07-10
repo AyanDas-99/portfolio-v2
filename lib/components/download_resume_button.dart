@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_1/state/resume/get_resume_repository.dart';
-import 'dart:developer' show log;
 
 import 'package:portfolio_1/state/utils/launch_url.dart';
 
@@ -27,7 +26,10 @@ class _DownloadResumeBtnState extends State<DownloadResumeBtn> {
             content: Center(
                 child: Text(
               "Resume not available at the moment",
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: Colors.white),
             )),
             backgroundColor: Colors.redAccent.shade700.withAlpha(100),
           ),
@@ -55,6 +57,8 @@ class _DownloadResumeBtnState extends State<DownloadResumeBtn> {
       },
       child: GestureDetector(
         onTap: downloadResume,
+        onTapDown: (details) => setState(() => hovering = true),
+        onTapCancel: () => setState(() => hovering = false),
         child: AnimatedContainer(
           width: 150,
           height: 40,
