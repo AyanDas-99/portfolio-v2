@@ -28,18 +28,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ProjectsProvider>().loadProjects();
-    return Consumer<ThemeModeProvider>(builder: (context, thememode, child) {
       return MaterialApp(
         title: 'Ayan Das',
-        darkTheme: CustomTheme.darkTheme,
+        theme: CustomTheme.darkTheme,
         debugShowCheckedModeBanner: false,
-        themeMode: thememode.mode,
         home: const HomePage(),
       );
-    });
+    // },
+    // );
   }
 }
-
 
 // Adding new project
 

@@ -1,4 +1,3 @@
-import 'dart:math' show min;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio_1/components/download_resume_button.dart';

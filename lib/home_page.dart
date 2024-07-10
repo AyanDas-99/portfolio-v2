@@ -5,6 +5,7 @@ import 'package:portfolio_1/contact_section/contact_section.dart';
 import 'package:portfolio_1/projects/view/projects_section.dart';
 import 'package:portfolio_1/responsive/responsive.dart';
 import 'package:portfolio_1/sections/about_section.dart';
+import 'package:portfolio_1/sections/end_section.dart';
 import 'package:portfolio_1/sections/hero_section.dart';
 import 'package:provider/provider.dart';
 
@@ -99,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 100),
                 ...tabs.map((tab) => tab['screen']),
+                const EndSection(),
               ],
             ),
           ),
