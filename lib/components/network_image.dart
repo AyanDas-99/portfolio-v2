@@ -31,6 +31,7 @@ class NetworkImageView extends StatelessWidget {
             image: NetworkImage(url),
             fit: BoxFit.fitWidth,
             imageErrorBuilder: (context, error, stackTrace) {
+              print("Could not load $url");
               return Image.asset("assets/images/personal_brand_white.webp");
             },
           ),
