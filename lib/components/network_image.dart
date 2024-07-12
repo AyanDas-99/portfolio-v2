@@ -20,7 +20,6 @@ class NetworkImageView extends StatelessWidget {
                       "assets/images/personal_brand_white.webp"),
                   image: NetworkImage(url),
                   fit: BoxFit.fitWidth,
-                  height: 500,
                 ),
               ),
             );
@@ -29,9 +28,9 @@ class NetworkImageView extends StatelessWidget {
             placeholder:
                 const AssetImage("assets/images/personal_brand_white.webp"),
             image: NetworkImage(url),
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.contain,
+            height: 500,
             imageErrorBuilder: (context, error, stackTrace) {
-              print("Could not load $url");
               return Image.asset("assets/images/personal_brand_white.webp");
             },
           ),
