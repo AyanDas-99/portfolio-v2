@@ -170,19 +170,23 @@ class ProjectView extends StatelessWidget {
                         radius: 30,
                         backgroundColor: Colors.black,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              launchLink(project.github);
+                            },
                             child: Image.asset(
                               "assets/images/github-mark-white.webp",
                               fit: BoxFit.contain,
                             )),
                       )),
                   const SizedBox(width: 10),
-                  if (project.live != null)
+                  if (project.live != null && project.live!.isNotEmpty)
                     CircleAvatar(
                       radius: 30,
                       backgroundColor: Colors.white,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          launchLink(project.live!);
+                        },
                         icon: const Icon(Icons.arrow_outward),
                         color: Colors.black,
                       ),
